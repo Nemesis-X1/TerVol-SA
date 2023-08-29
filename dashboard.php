@@ -38,7 +38,193 @@ $countLowStock2 = $lowStockQuery2->num_rows;
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <div class="page-wrapper">
 
+    <!--     <div class="row page-titles">
+                <div class="col-md-12 align-self-center">
+                    <div class="float-right"><h3 style="color:black;"><p style="color:black;"><?php echo date('l') . ' ' . date('d') . '- ' . date('m') . '- ' . date('Y'); ?></p></h3>
+                    </div>
+                    </div>
+                
+            </div> -->
 
+
+    <div class="container-fluid ">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <strong class="card-title">Tabla de Facturas</strong>
+
+                    <div class="table-responsive m-t-40">
+                        <table id="myTable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Fecha</th>
+                                    <th>Nombre Cliente</th>
+                                    <th>Contacto</th>
+
+                                    <th>Estado del Pago</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                //include('./constant/connect');
+
+                                $sql = "SELECT  uno, orderDate, clientName, clientContact,paymentStatus,id FROM orders WHERE delete_status = 0";
+                                //echo $sql;exit;
+                                $result = $connect->query($sql);
+                                //print_r($result);exit;
+                                foreach ($result as $row) {
+
+                                    $no += 1;
+                                ?>
+                                    <tr>
+                                        <td><?= $no; ?></td>
+                                        <td><?php echo $row['orderDate'] ?></td>
+                                        <td><?php echo $row['clientName'] ?></td>
+                                        <td><?php echo $row['clientContact'] ?></td>
+
+
+                                        <td><?php if ($row['paymentStatus'] == 1) {
+
+                                                $paymentStatus = "<label class='label label-info' ><h4>Pago Completo</h4></label>";
+                                                echo $paymentStatus;
+                                            } else if ($row['payment_status'] == 2) {
+                                                $paymentStatus = "<label class='label label-warning'><h4>Pago Parcial</h4></label>";
+                                                echo $paymentStatus;
+                                            } else {
+                                                $paymentStatus = "<label class='label label-danger'><h4>Pago Pendiente</h4></label>";
+                                                echo $paymentStatus;
+                                            } // /els
+                                            ?></td>
+
+                                    </tr>
+
+                            </tbody>
+                        <?php
+                                }
+
+                        ?>
+                        </table>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 dashboard">
+                <div class="card" style="background: #eb8038 ">
+                    <div class="media widget-ten">
+                        <div class="media-left meida media-middle">
+                            <span><i class="ti-support"></i></span>
+                        </div>
+                        <div class="media-body media-text-right">
+
+
+                            <h2 class="color-white"><?php echo $countLowStock; ?></h2>
+                            <a href="product.php">
+                                <p class="m-b-0">Medicinas</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php if (isset($_SESSION['userId']) && $_SESSION['userId'] == 1) { ?>
+                <div class="col-md-6 dashboard">
+                    <div class="card" style="    background-color: #f05746 ">
+                        <div class="media widget-ten">
+                            <div class="media-left meida media-middle">
+                                <span><i class="ti-agenda"></i></span>
+                            </div>
+                            <div class="media-body media-text-right">
+
+                                <h2 class="color-white"><?php echo $countLowStock3; ?></h2>
+                                <a href="Order.php">
+                                    <p class="m-b-0">Medicinas Vencidas</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+            <?php if (isset($_SESSION['userId']) && $_SESSION['userId'] == 1) { ?>
+                <div class="col-md-6 dashboard">
+                    <div class="card " style="    background-color: #46f9a0 ">
+                        <div class="media widget-ten">
+                            <div class="media-left meida media-middle">
+                                <span><i class="ti-notepad"></i></span>
+                            </div>
+                            <div class="media-body media-text-right">
+
+                                <h2 class="color-white"><?php echo $countLowStock2; ?></h2>
+                                <a href="Order.php">
+                                    <p class="m-b-0">Facturas</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
+            <?php if (isset($_SESSION['userId']) && $_SESSION['userId'] == 1) { ?>
+                <div class="col-md-6 dashboard">
+                    <div class="card" style="background:#65c8db ">
+                        <div class="media widget-ten">
+                            <div class="media-left meida media-middle">
+                                <span><i class="ti-rss"></i></span>
+                            </div>
+                            <div class="media-body media-text-right">
+
+
+
+
+                                <h2 class="color-white"><?php echo $countLowStock1; ?></h2>
+                                <a href="product.php">
+                                    <p class="m-b-0">Proveedores</p>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php } ?>
+
+
+
+
+        </div>
+
+
+        <?php
+        //error_reporting(0);
+        //require_once('../constant/connect.php');
+        $qqq = "SELECT * FROM product WHERE  status ='1' ";
+        $result = $connect->query($qqq);
+        //print_r($result);exit;
+        foreach ($result as $row) {
+
+            //print_r($row);
+            $a .= $row["product_name"] . ',';
+            $b .= $row["quantity"] . ',';
+        }
+        $am = explode(",", $a, -1);
+        $amm = explode(",", $b, -1);
+        //print_r($a);
+        //print_r($b);
+
+        $cnt = count($am);
+
+        $datavalue1 = '';
+        for ($i = 0; $i < $cnt; $i++) {
+            $datavalue1 .= "['" . $am[$i] . "'," . $amm[$i] . "],";
+        }
+        //echo 
+
+        $datavalue1; //used this $data variable in js
+        ?>
+
+
+
+    </div>
 </div>
 </div>
 
