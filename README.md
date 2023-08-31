@@ -42,8 +42,6 @@ El Sistema de Gestión de Farmacia en PHP MySQL con Código Fuente ofrece las si
 4. **Administración de Facturas:**
    - Agregar nuevas facturas con detalles sobre los productos vendidos y los clientes.
    - Listar las facturas generadas, mostrando información resumida.
-   - Editar facturas en caso de cambios o correcciones.
-   - Eliminar facturas incorrectas o que ya no sean válidas.
    - Imprimir versiones físicas de las facturas para registros contables.
 
 5. **Generación de Reportes:**
