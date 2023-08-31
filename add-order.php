@@ -23,36 +23,6 @@ if ($_GET['o'] == 'add') {
 
 ?>
 
-<!-- <ol class="breadcrumb">
-  <li><a href="dashboard.php">Home</a></li>
-  <li>Order</li>
-  <li class="active">
-    <?php //if($_GET['o'] == 'add') { 
-    ?>
-      Add Order
-    <? php // } else if($_GET['o'] == 'manord') { 
-    ?>
-      Manage Order
-    <?php //} // /else manage order 
-    ?>
-  </li>
-</ol>
-
-
-<h4>
-  <i class='glyphicon glyphicon-circle-arrow-right'></i>
-  <?php //if($_GET['o'] == 'add') {
-  //echo "Add Order";
-  //} else if($_GET['o'] == 'manord') { 
-  // echo "Manage Order";
-  //} else if($_GET['o'] == 'editOrd') { 
-  //  echo "Edit Order";
-  //}
-  ?>  
-</h4>
- -->
-
-
 
 <div class="page-wrapper">
 
@@ -207,19 +177,14 @@ if ($_GET['o'] == 'add') {
         </tbody>
         </table>
 
+        <!--Etiqueta-->
+
 
         <div class="form-group">
           <div class="row">
-            <label class="col-sm-2 control-label">Sub total</label>
             <div class="col-sm-4">
-              <input type="text" class="form-control" id="subTotal" name="subTotal" disabled="true" />
-              <input type="hidden" class="form-control" id="subTotalValue" name="subTotalValue" />
-            </div>
-
-            <label for="totalAmount" class="col-sm-2 control-label">Monto total</label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control" id="totalAmount" name="totalAmount" disabled="true" />
-              <input type="hidden" class="form-control" id="totalAmountValue" name="totalAmountValue" />
+              <label type="text" class="form-control" id="subTotal" name="subTotal" disabled="true" style="border: none;"/>
+              <label type="hidden" class="form-control" id="subTotalValue" name="subTotalValue" style="border: none;"/>
             </div>
 
           </div>
@@ -227,10 +192,7 @@ if ($_GET['o'] == 'add') {
 
         <div class="form-group">
           <div class="row">
-            <label for="discount" class="col-sm-2 control-label">Descuento</label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control" id="discount" name="discount" onkeyup="discountFunc()" autocomplete="off" / pattern="^[0-9]+$" />
-            </div>
+
             <label for="grandTotal" class="col-sm-2 control-label">Total</label>
             <div class="col-sm-4">
               <input type="text" class="form-control" id="grandTotal" name="grandTotal" disabled="true" />
@@ -247,12 +209,6 @@ if ($_GET['o'] == 'add') {
 
         <div class="form-group">
           <div class="row">
-            <label for="vat" class="col-sm-2 control-label gst">IVA 13%</label>
-            <div class="col-sm-4">
-              <input type="text" class="form-control" id="vat" name="gstn" readonly="true" />
-              <input type="hidden" class="form-control" id="vatValue" name="vatValue" />
-            </div>
-
             <label for="paid" class="col-sm-2 control-label">Monto Pagado</label>
             <div class="col-sm-4">
               <input type="text" class="form-control" id="paid" name="paid" autocomplete="off" onkeyup="paidAmount()" />
@@ -299,15 +255,6 @@ if ($_GET['o'] == 'add') {
               </select>
             </div>
 
-            <label for="clientContact" class="col-sm-2 control-label">Sucursal</label>
-            <div class="col-sm-4">
-              <select class="form-control" name="paymentPlace" id="paymentPlace">
-                <option value="">~~Seleccionar~~</option>
-                <option value="1">Av. Beni Tercer Anillo</option>
-                <option value="2">Plan 3K</option>
-                <option value="3">La Villa</option>
-              </select>
-            </div>
           </div>
         </div>
         <div class="form-group submitButtonFooter">
@@ -466,7 +413,7 @@ if ($_GET['o'] == 'add') {
         } // for        
 
 
-        if (orderDate && clientName && clientContact && paid && discount && paymentType && paymentStatus) {
+        if (orderDate && clientName && clientContact && paid && paymentType && paymentStatus) {
           if (validateProduct == true && validateQuantity == true) {
             // create order button
             // $("#createOrderBtn").button('loading');
@@ -540,7 +487,6 @@ if ($_GET['o'] == 'add') {
         var clientName = $("#clientName").val();
         var clientContact = $("#clientContact").val();
         var paid = $("#paid").val();
-        var discount = $("#discount").val();
         var paymentType = $("#paymentType").val();
         var paymentStatus = $("#paymentStatus").val();
 
@@ -571,13 +517,6 @@ if ($_GET['o'] == 'add') {
           $('#paid').closest('.form-group').addClass('has-error');
         } else {
           $('#paid').closest('.form-group').addClass('has-success');
-        } // /else
-
-        if (discount == "") {
-          $("#discount").after('<p class="text-danger"> El campo Descuento es obligatorio </p>');
-          $('#discount').closest('.form-group').addClass('has-error');
-        } else {
-          $('#discount').closest('.form-group').addClass('has-success');
         } // /else
 
         if (paymentType == "") {
@@ -637,7 +576,7 @@ if ($_GET['o'] == 'add') {
         } // for        
 
 
-        if (orderDate && clientName && clientContact && paid && discount && paymentType && paymentStatus) {
+        if (orderDate && clientName && clientContact && paid && paymentType && paymentStatus) {
           if (validateProduct == true && validateQuantity == true) {
             // create order button
             // $("#createOrderBtn").button('loading');
@@ -906,14 +845,10 @@ if ($_GET['o'] == 'add') {
     $("#subTotal").val(totalSubAmount);
     $("#subTotalValue").val(totalSubAmount);
 
-    // vat
-    var vat = (Number($("#subTotal").val()) / 100) * 13;
-    vat = vat.toFixed(2);
-    $("#vat").val(vat);
-    $("#vatValue").val(vat);
+ 
 
     // total amount
-    var totalAmount = (Number($("#subTotal").val()) + Number($("#vat").val()));
+    var totalAmount = (Number($("#subTotal").val()));
     totalAmount = totalAmount.toFixed(2);
     $("#totalAmount").val(totalAmount);
     $("#totalAmountValue").val(totalAmount);
@@ -931,52 +866,23 @@ if ($_GET['o'] == 'add') {
 
     var paidAmount = $("#paid").val();
     if (paidAmount) {
-      paidAmount = Number($("#grandTotal").val()) - Number(paidAmount);
+      paidAmount = Number($("#subTotal").val()) - Number(paidAmount);
       paidAmount = paidAmount.toFixed(2);
       $("#due").val(paidAmount);
       $("#dueValue").val(paidAmount);
     } else {
-      $("#due").val($("#grandTotal").val());
-      $("#dueValue").val($("#grandTotal").val());
+      $("#due").val($("#subTotal").val());
+      $("#dueValue").val($("#subTotal").val());
     } // else
 
   } // /sub total amount
 
-  function discountFunc() {
-    var discount = $("#discount").val();
-    var totalAmount = Number($("#totalAmount").val());
-    totalAmount = totalAmount.toFixed(2);
-
-    var grandTotal;
-    if (totalAmount) {
-      grandTotal = Number($("#totalAmount").val()) - Number($("#discount").val());
-      grandTotal = grandTotal.toFixed(2);
-
-      $("#grandTotal").val(grandTotal);
-      $("#grandTotalValue").val(grandTotal);
-    } else {}
-
-    var paid = $("#paid").val();
-
-    var dueAmount;
-    if (paid) {
-      dueAmount = Number($("#grandTotal").val()) - Number($("#paid").val());
-      dueAmount = dueAmount.toFixed(2);
-
-      $("#due").val(dueAmount);
-      $("#dueValue").val(dueAmount);
-    } else {
-      $("#due").val($("#grandTotal").val());
-      $("#dueValue").val($("#grandTotal").val());
-    }
-
-  } // /discount function
 
   function paidAmount() {
     var grandTotal = $("#grandTotal").val();
 
     if (grandTotal) {
-      var dueAmount = Number($("#grandTotal").val()) - Number($("#paid").val());
+      var dueAmount = (Number($("#grandTotal").val()) - Number($("#paid").val())) * -1;
       dueAmount = dueAmount.toFixed(2);
       $("#due").val(dueAmount);
       $("#dueValue").val(dueAmount);

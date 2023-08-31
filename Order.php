@@ -69,7 +69,7 @@ $result = $connect->query($sql);
                                             $paymentStatus = "<label class='label label-success' ><h4>Pago Completo</h4></label>";
                                             echo $paymentStatus;
                                         } else if ($row['payment_status'] == 2) {
-                                            $paymentStatus = "<label class='label label-danger'><h4>Pago Pactial</h4></label>";
+                                            $paymentStatus = "<label class='label label-danger'><h4>Pago Parcial</h4></label>";
                                             echo $paymentStatus;
                                         } else {
                                             $paymentStatus = "<label class='label label-warning'><h4>Pago Pendiente</h4></label>";
@@ -77,16 +77,10 @@ $result = $connect->query($sql);
                                         } // /els
                                         ?></td>
                                     <td>
-
-                                        <a href="editorder.php?id=<?php echo $row['id'] ?>"><button type="button" class="btn btn-xs btn-primary"><i class="fa fa-pencil"></i></button></a>
-
-
-
-                                        <a href="php_action/removeOrder.php?id=<?php echo $row['id'] ?>"><button type="button" class="btn btn-xs btn-danger" onclick="return confirm('Deseas eliminar este registro?')"><i class="fa fa-trash"></i></button></a>
-
-                                        <a href="invoiceprint.php?id=<?php echo $row['id'] ?>"><button type="button" class="btn btn-xs btn-success"><i class="fa fa-print"></i></button></a>
-
-
+                                        <center>
+                                        <a href="invoiceprint.php?id=<?php echo $row['id'] ?>"><button type="button" class="btn btn-xs btn-success"><i class="fa fa-print" ></i></button></a>
+                                        </center>
+                                        
                                     </td>
                                 </tr>
 

@@ -227,9 +227,9 @@ foreach ($result as $row) { //print_r($row);exit;
 					</tr>
 					<tr>
 						<td rowspan="3" colspan="3" style="border: 1px solid #555">A/C NO:0064867230047 <br>SWIFT:DTDA1320
-							<br>Banco del Pueblo
+							<br>Banco del Ganadero
 						</td>
-						<td colspan="3" style="border: 1px solid;text-align: left;">Descuentos</td>
+						<td colspan="3" style="border: 1px solid;text-align: left;">Monto Pagado</td>
 						<?php
 
 						$stmt1 = "SELECT * FROM orders WHERE clientName='" . $row['clientName'] . "'";
@@ -237,11 +237,12 @@ foreach ($result as $row) { //print_r($row);exit;
 
 						foreach ($cola as $pepsi)
 						?>
-						<td style="border: 1px solid"><?php echo $pepsi['discount'] ?></td>
+						<td style="border: 1px solid"><?php echo $pepsi['paid'] ?></td>
 					</tr>
+					
 					<tr>
-						<td colspan="3" style="border: 1px solid">Impuestos</td>
-						<td style="border: 1px solid;text-align: left;"><?php echo $pepsi['gstn'] ?></td>
+						<td colspan="3" style="border: 1px solid">Cambio</td>
+						<td style="border: 1px solid;text-align: left;"><?php echo $pepsi['dueValue'] ?></td>
 					</tr>
 					<tr>
 						<td colspan="3" style="border: 1px solid">Total</td>
@@ -311,7 +312,7 @@ foreach ($result as $row) { //print_r($row);exit;
 						$words[$point = $point % 10] : '';
 
 					?>
-					<td>Monto:<b><?php echo $result . "COP  " . $points; ?></b></td>
+					<td>Monto:<b><?php echo $result . "Bs.  " . $points; ?></b></td>
 					<td>Total: <?php echo $totalAmount; ?> </td>
 				</tr>
 			</table>

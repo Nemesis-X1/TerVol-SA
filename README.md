@@ -1,47 +1,12 @@
 # Sistema de Gestión de Farmacia en PHP MySQL con Código Fuente
+<img src="https://i0.wp.com/www.configuroweb.com/wp-content/uploads/2022/05/Sistema-de-Gestion-de-Farmacia-en-PHP-MySQL-con-Codigo-Fuente.png?resize=800%2C500&ssl=1">
 
-![TerVol-SA](assets/myimages/fondo.png)
+Este Sistema de Gestión de Farmacia en PHP MySQL con Código Fuente le permite al usuario administrativo las siguientes opciones:
 
-Este proyecto consiste en un Sistema de Gestión de Farmacia desarrollado en PHP y MySQL que proporciona a los usuarios administrativos una serie de funcionalidades para facilitar la administración y operación de una farmacia. El sistema permite llevar un control detallado de los proveedores, categorías, medicinas, facturas y reportes de ventas.
+- Agregar, Listar, Editar y Eliminar Proveedores
+- Agregar, Listar, Editar y Eliminar Categorías
+- Agregar, Listar, Editar y Eliminar Medicinas
+- Agregar, Listar, Editar, Eliminar e Imprimir Facturas
+- Listar el Reporte de Ventas, Productos y Productos Vencidos por Periodos de Tiempo
 
-## Características y Funcionalidades
-
-El Sistema de Gestión de Farmacia en PHP MySQL con Código Fuente ofrece las siguientes opciones a los usuarios administrativos:
-
-1. **Administración de Proveedores:**
-   - Agregar nuevos proveedores junto con su información relevante.
-   - Listar todos los proveedores disponibles.
-   - Editar la información de los proveedores existentes.
-   - Eliminar proveedores que ya no sean necesarios.
-
-2. **Administración de Categorías:**
-   - Agregar nuevas categorías para clasificar las medicinas de manera eficiente.
-   - Listar todas las categorías creadas en el sistema.
-   - Editar los nombres y detalles de las categorías.
-   - Eliminar categorías que ya no sean relevantes.
-
-3. **Administración de Medicinas:**
-   - Agregar información detallada sobre nuevas medicinas, incluyendo nombre, descripción y precio.
-   - Asociar medicinas con sus respectivas categorías para un mejor ordenamiento.
-   - Listar todas las medicinas disponibles con sus detalles.
-   - Actualizar la información de las medicinas cuando sea necesario.
-   - Eliminar registros de medicinas que ya no estén en stock.
-
-4. **Administración de Facturas:**
-   - Agregar nuevas facturas con detalles sobre los productos vendidos y los clientes.
-   - Listar las facturas generadas, mostrando información resumida.
-   - Editar facturas en caso de cambios o correcciones.
-   - Eliminar facturas incorrectas o que ya no sean válidas.
-   - Imprimir versiones físicas de las facturas para registros contables.
-
-5. **Generación de Reportes:**
-   - Generar reportes de ventas que muestran los productos vendidos y los ingresos obtenidos en períodos específicos.
-   - Obtener un informe detallado de los productos disponibles y sus cantidades.
-   - Identificar medicinas que han vencido en un rango de tiempo determinado.
-
-
-## Requisitos del Sistema
-
-- Servidor web que admita PHP (por ejemplo, Apache).
-- Servidor de base de datos MySQL.
-- Navegador web actualizado para acceder a la interfaz del sistema.
+Más información en el siguiente enlace: <a href="https://www.configuroweb.com/sistema-de-gestion-de-farmacia/">Sistema de Gestión de Farmacia en PHP MySQL con Código Fuente</a>

@@ -99,7 +99,7 @@ include('./constant/connect.php');
     <!-- Copyright -->
     <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
          Para tener acceso al codigo fuente 
-        <a class="text-white" href="https://www.applelianos.com/podcast/2016/11/12/culos-pasteles-nuevo-trabajo-fotografico">TerVol SA</a>
+        <a class="text-white" href="https://github.com/Nemesis-X1/TerVol-SA.git">TerVol SA</a>
     </div>
     <!-- Copyright -->
 </footer>

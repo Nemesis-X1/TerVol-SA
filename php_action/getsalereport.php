@@ -55,11 +55,6 @@ if ($_POST) {
 	}
 	$table .= '
 		</tr>
-
-		<tr>
-			<td colspan="3"><center>Total</center></td>
-			<td><center>' . $totalAmount . '</center></td>
-		</tr>
 	</table>
 	';
 	echo $table;
